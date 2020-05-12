@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<section class="container">
+    {{ user.username }}
+    {{ user.password }}
+    {{ user.id }}
+    <div class='container'>
+      <h1>new post</h1>
+      <h2>create a new blog post</h2>
+      <hr>
+    <form class='container' action="/add_post/{{ user.id }}" role="form" class="contactForm"  method="post">
+        <div>
+          <p>title</p>
+          <input class="form-control" type="text" name='title' placeholder="title" id='title' required>
+        </div>
+        <div >
+          <p>post</p>
+          <textarea class="form-control" name="post" rows="5" placeholder="type your post "></textarea>
+        </div>
+        <div class="container"><button type="submit" class="btn btn-primary"> post </button></div>
+      </form>
+    </div>
+    <div class='container'>
+    <h2>my posts</h2><br><hr>
+    <ul>
+    {% for u in posts %}
+    <div class='container'>
+            <li class="post">
+                <h1>{{ u.title }}</h1>
+                <small>posted by {{ u.author }} on date {{ u.date }}</small>
+                <p>{{ u.content }}</p>
+                <a class='btn btn-danger' href='/post/delete/{{ u.id }}'>delete</a>
+                <a class='btn btn-sm btn-success' href='/edit/{{ u.id }}'>edit</a>
+            </li>
+    </div>
+{% endfor %}
+        </ul>
+        </div>
+</section>
+
+
+{% endblock %}

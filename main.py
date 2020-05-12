@@ -28,10 +28,20 @@ class Post(db.Model):
 
     def __repr__(self):
         return self.title  
-    
-@app.route('/')
-def test():
-    return 'hellow world'
+
+## login  
+@app.route('/', methods = ['GET','POST'])
+def login():
+    if request.method == "GET":
+        return render_template('login.html')
+    else:
+        name = request.form.get('name')
+        password = request.form.get('password')
+        if User.query.filter_by(name=name).filter_by(password=password).all() == []:
+            redirect('/')
+        else:
+            Use = User.query.filter_by(name=name).filter_by(password=password).first() 
+            return Use.name
 
 ## signin 
 @app.route('/signin', methods= ['GET','POST'])
@@ -45,6 +55,7 @@ def signin():
         db.session.add(u)
         db.session.commit()
         return name+' '+password
-    
+## my_post
+
 if __name__ == '__main__':
     app.run(debug=True)
