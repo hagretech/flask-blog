@@ -86,6 +86,7 @@ def edit_post(id):
         post.content = request.form.get('content')
         db.session.commit()
         return redirect('/posts/%s'%post.auther_id)
+    datetime.now()
 ## delete post
 @app.route('/del_post/<int:id>')
 def del_id(id):
