@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class=''>
+    <div class='container'>
+      <h1>edit blog post</h1>
+      <h2>edit</h2>
+      <hr>
+      <form class='container' action="/edit_post/{{post.id}}" role="form" class="contactForm" method="post">
+        <div >
+          <p>title</p>
+          <input class="form-control" type="text" name='title' placeholder="title" id='title' value={{ post.title }} required>
+        </div>
+        <div >
+          <p>post</p>
+          <textarea class="form-control" name="content" rows="5" placeholder="type your post ">{{ post.content}}</textarea>
+        </div>
+        <div class="container"><button type="submit" class="btn btn-primary"> save </button></div>
+      </form>
+    </div>
+  </section>
+{% endblock %}

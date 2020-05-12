@@ -75,7 +75,24 @@ def posts(id):
 def home():
     posts = Post.query.all()
     return render_template('home.html', posts = posts)
-
+## edit post
+@app.route('/edit_post/<int:id>',methods=["GET","POST"])
+def edit_post(id):
+    post = Post.query.get(id)
+    if request.method == "GET":
+        return render_template('edit_post.html', post = post)
+    else:
+        post.title = request.form.get('title')
+        post.content = request.form.get('content')
+        db.session.commit()
+        return redirect('/posts/%s'%post.auther_id)
+## delete post
+@app.route('/del_post/<int:id>')
+def del_id(id):
+    post = Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect('/posts/%s'%post.auther_id)
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)
