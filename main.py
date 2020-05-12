@@ -38,10 +38,10 @@ def login():
         name = request.form.get('name')
         password = request.form.get('password')
         if User.query.filter_by(name=name).filter_by(password=password).all() == []:
-            redirect('/')
+            return redirect('/')
         else:
             Use = User.query.filter_by(name=name).filter_by(password=password).first() 
-            return Use.name
+            return redirect('/posts/%s'%Use.id)
 
 ## signin 
 @app.route('/signin', methods= ['GET','POST'])
@@ -54,8 +54,22 @@ def signin():
         u = User(name=name, password=password)
         db.session.add(u)
         db.session.commit()
-        return name+' '+password
-## my_post
+        id = User.query.filter_by(name=name).filter_by(password=password).first().id
+        return redirect('posts/%s'%id)
+    
+## posts
+@app.route('/posts/<int:id>',methods= ["GET","POST"])
+def posts(id):
+    user = User.query.get_or_404(id)
+    if request.method == "GET":
+        return render_template('posts.html', user=user)
+    else:
+        title = request.form.get("title")
+        content = request.form.get('content')
+        p = Post(title=title, content=content, auther_id = id)
+        db.session.add(p)
+        db.session.commit()
+        return render_template('posts.html', user=user)
 
 if __name__ == '__main__':
     app.run(debug=True)

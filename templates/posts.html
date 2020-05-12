@@ -9,14 +9,14 @@
       <h1>new post</h1>
       <h2>create a new blog post</h2>
       <hr>
-    <form class='container' action="/add_post/{{ user.id }}" role="form" class="contactForm"  method="post">
+    <form class='container' action="/posts/{{ user.id }}" role="form" class="contactForm"  method="post">
         <div>
           <p>title</p>
           <input class="form-control" type="text" name='title' placeholder="title" id='title' required>
         </div>
         <div >
           <p>post</p>
-          <textarea class="form-control" name="post" rows="5" placeholder="type your post "></textarea>
+          <textarea class="form-control" name="content" rows="5" placeholder="type your post " required></textarea>
         </div>
         <div class="container"><button type="submit" class="btn btn-primary"> post </button></div>
       </form>
@@ -24,7 +24,7 @@
     <div class='container'>
     <h2>my posts</h2><br><hr>
     <ul>
-    {% for u in posts %}
+    {% for u in user.posts %}
     <div class='container'>
             <li class="post">
                 <h1>{{ u.title }}</h1>
