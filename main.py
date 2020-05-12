@@ -62,14 +62,20 @@ def signin():
 def posts(id):
     user = User.query.get_or_404(id)
     if request.method == "GET":
-        return render_template('posts.html', user=user)
+        return render_template('post.html', user=user)
     else:
         title = request.form.get("title")
         content = request.form.get('content')
-        p = Post(title=title, content=content, auther_id = id)
+        p = Post(title=title, content=content, auther_id = id, )
         db.session.add(p)
         db.session.commit()
-        return render_template('posts.html', user=user)
+        return render_template('post.html', user=user)
+## home 
+@app.route('/home')
+def home():
+    posts = Post.query.all()
+    return render_template('home.html', posts = posts)
 
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True)

@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% block body %}
+<div class="container top_head ">
+        <h1>All posts</h1>
+        <a href='/' class=" addpost btn  btn-success btn-sm " >+ add post</a>
+        <div class='search'>
+                <input type='text'  placeholder="search" name="search" class=''>
+                <label for="search">
+                    <button type='submit'><i class="fa fa-search"></i></button>
+                </label>
+            </div>
+        
+    </div>
+    
+<section class="container">
+       <hr>
+        <ul>
+    {% for p in posts %}
+            <li class="post">
+                <h1>{{ p.title }}</h1>
+                <small>posted by : <big style='font-weight: bold'>{{ p.auther.name }} </big>on date {{ p.date }}</small>
+                <p>{{ p.content }}</p>
+                <a href='' class="float-left" ><i class="fa fa-heart"></i>23</a>
+                <a href='' class="float-left" ><i class="fa fa-comment"></i>343</a>
+            </li>
+
+{% endfor %}
+        </ul>
+</section>
+{% endblock %}
