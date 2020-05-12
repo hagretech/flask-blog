@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Imperial Boootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <!-- Bootstrap CSS File -->
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="../static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/lib/animate-css/animate.min.css" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="../static/lib/animate-css/animate.min.css" />
+    <link href="../static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>HagreWeb Blog</h1>
+        <nav class="">
+            <ul class="">
+                <li class=""><a class='btn btn-link'  href="/home/{%if id%}{{id}}{%elif user%}{{user.id}}{%endif%}">home</a></li>
+                <li><a class='btn btn-link' href="/signin">signin</a></li>
+                <li> <a class='btn btn-link' href="/login">login</a></li>
+            </ul>
+        </nav>
+    </header>
+{% block body %} 
+    
+{% endblock %}
+
+    <!-- Required JavaScript Libraries -->
+    <script src="../static/lib/jquery/jquery.min.js"></script>
+    <script src="../static/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/lib/morphext/morphext.min.js"></script>
+    <script src="../static/lib/wow/wow.min.js"></script>
+    <script src="../static/lib/easing/easing.js"></script>
+    <!-- Template Specisifc Custom Javascript File -->
+    <script src="../static/js/custom.js"></script>
+</body>
+
+</html>

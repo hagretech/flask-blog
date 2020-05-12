@@ -27,12 +27,24 @@ class Post(db.Model):
     auther_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable= False)
 
     def __repr__(self):
-        return self.title
-    
+        return self.title  
     
 @app.route('/')
 def test():
     return 'hellow world'
 
+## signin 
+@app.route('/signin', methods= ['GET','POST'])
+def signin():
+    if request.method == 'GET' :
+        return render_template('signin.html')
+    else:
+        name = request.form.get('name')
+        password = request.form.get('password')
+        u = User(name=name, password=password)
+        db.session.add(u)
+        db.session.commit()
+        return name+' '+password
+    
 if __name__ == '__main__':
     app.run(debug=True)
