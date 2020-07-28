@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<section class="container">
+    <div>
+      <h1>admin</h1>
+      <hr>
+    </div>
+    <div >
+    <h2>all users</h2><br><hr>
+    <ul>
+    {% for u in users %}
+    <div >
+            <li class="post">
+                <h1><i class='fa fa-user'></i>username: {{ u.name }}</h1>
+                <h1>access: {{ u.access }}</h1>
+                <h1>password: {{ u.password }}</h1>
+                <a class='btn btn-danger' href='/del_user/{{ u.id }}'>delete</a>
+            </li>
+    </div>
+{% endfor %}
+        </ul>
+        </div>
+</section>
+
+
+{% endblock %}

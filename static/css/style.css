@@ -5,8 +5,18 @@
  box-sizing: border-box;
  color: #000000;
 }
+body{
+	background: #e5e5e5;
+}
+.container{
+	width: 70%
+}
 section h1{
   text-decoration: underline;
+}
+input{
+	width: 60%!important;
+	white-space: normal;
 }
 h2{
     margin-bottom:10px;
@@ -16,6 +26,7 @@ header {
  display: flex;
  justify-content: space-between;
  color: white;
+	height: 10vh;
 }
 
 header h1 {
@@ -28,7 +39,6 @@ header h1 {
 header nav {
  width: 30%;
  display: flex;
-
 }
 
 nav ul {
@@ -69,7 +79,7 @@ header nav ul li a {
     width: 40%;
 }
 .top_head .search input{
-	   width:80%;
+	  width:60%;
     border: 1px solid #86cb4b;
     border-radius: 5px 0px 0px 10px;
     padding-left:10px; 
@@ -142,6 +152,21 @@ form div{
 }
 form div p{
   margin: 3px;
+}
+.log_form{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	width:100%;
+}
+.log_form .log_form_cont{
+	margin-top:50px;
+	width: 60%;
+}
+.post_form{
+	height: 90vh;
+	background: url('../images/bg.png') no-repeat;
+	background-size: cover;
 }
 
 

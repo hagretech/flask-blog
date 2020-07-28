@@ -5,7 +5,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 ## the sql database confic
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 db = SQLAlchemy(app)
 
@@ -15,6 +15,7 @@ class User(db.Model):
     name = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(20),nullable=False)
     profile_img = db.Column(db.String(), default='main.jpg')
+    access = db.Column(db.String(20),nullable=False, default='user')
     posts = db.relationship('Post', backref='auther',lazy=True)
     def __repr__(self):
         return self.name
@@ -94,6 +95,23 @@ def del_id(id):
     db.session.delete(post)
     db.session.commit()
     return redirect('/posts/%s'%post.auther_id)
+
+## admin 
+@app.route('/admin/<int:id>')
+def admin(id):
+    if User.query.get(id).access == "admin":
+        users = User.query.all()
+        return render_template('admin.html',users = users)
+    else:
+        return redirect('/home')
+## delete user
+@app.route('/del_user/<int:id>')
+def user_delete(id):
+    user = User.query.get_or_404(id)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect('/admin/1')
 if __name__ == '__main__':
+    db.drop_all()
     db.create_all()
     app.run(debug=True)

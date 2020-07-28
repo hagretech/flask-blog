@@ -3,21 +3,25 @@
 {% block body %}
 
 <section class="post_form">
-    <div class='container'>
-        <h2>login</h2>
-    </div>
-    <form action="/" role="form" class="contactForm"  method="post">
-       <div class="container">
-        <div class="form_list_cont">
-            <p>username</p>
-            <input class="form-control" type="text" name="name" placeholder="name" id='name' required>
-        </div>
-        <div class="form_list_cont">
-            <p>password</p>
-            <input class="form-control" type="password" name='password' id='password' placeholder='password' required> 
-        </div>
-        <div class=""><button type="submit" class="btn btn-primary"> login </button></div>
-        </div>
-    </form>
+	<div class="log_form">
+		<div class="log_form_cont">
+			<div class='container'>
+				<h2>login</h2>
+			</div>
+			<form action="/" role="form" class="contactForm" method="post">
+				<div class="container">
+					<div class="form_list_cont">
+						<p>username</p>
+						<input class="form-control" type="text" name="name" placeholder="name" id='name' required>
+					</div>
+					<div class="form_list_cont">
+						<p>password</p>
+						<input class="form-control" type="password" name='password' id='password' placeholder='password' required>
+					</div>
+					<div class=""><button type="submit" class="btn btn-primary"> login </button></div>
+				</div>
+			</form>
+		</div>
+	</div>
 </section>
 {% endblock %}

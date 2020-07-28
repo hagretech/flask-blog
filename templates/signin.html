@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class='container'>
-        <h2>sign in</h2>
-    </div>
 <section class="post_form">
-    <form action="/signin" role="form" class="contactForm"  method="post">
-       <div class="container">
-        <div class="user">
-            <p>username</p>
-            <input class="form-control" type="text" name="name" placeholder="name" id='name' required>
-        </div>
-        <div class="pass">
-            <p>password</p>
-            <input class="form-control" type="password" name='password' placeholder="password" id='password' required> 
-        </div>
-        <div class=" "><button type="submit" class="btn btn-primary"> sign in </button></div>
-        </div>
-    </form>
+	<div class="log_form">
+		<div class="log_form_cont">
+			<div class='container'>
+				<h2>sign in</h2>
+			</div>
+
+			<form action="/signin" role="form" class="contactForm" method="post">
+				<div class="container">
+					<div class="user">
+						<p>username</p>
+						<input class="form-control" type="text" name="name" placeholder="name" id='name' required>
+					</div>
+					<div class="pass">
+						<p>password</p>
+						<input class="form-control" type="password" name='password' placeholder="password" id='password' required>
+					</div>
+					<div class=" "><button type="submit" class="btn btn-primary"> sign in </button></div>
+				</div>
+			</form>
+		</div>
+	</div>
 </section>
 {% endblock %}

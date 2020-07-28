@@ -2,14 +2,10 @@
 {% block body %}
 
 <section class="container">
-    {{ user.username }}
-    {{ user.password }}
-    {{ user.id }}
-    <div class='container'>
+    <div>
       <h1>new post</h1>
-      <h2>create a new blog post</h2>
       <hr>
-    <form class='container' action="/posts/{{ user.id }}" role="form" class="contactForm"  method="post">
+    <form  action="/posts/{{ user.id }}" role="form" class="form"  method="post">
         <div>
           <p>title</p>
           <input class="form-control" type="text" name='title' placeholder="title" id='title' required>
@@ -18,14 +14,17 @@
           <p>post</p>
           <textarea class="form-control" name="content" rows="5" placeholder="type your post " required></textarea>
         </div>
-        <div class="container"><button type="submit" class="btn btn-primary"> post </button></div>
+        <div><button type="submit" class="btn btn-primary"> post </button></div>
       </form>
     </div>
-    <div class='container'>
-    <h2>my posts</h2><br><hr>
+    <br>
+    <hr>
+    <br>
+    <div >
+    <h2>my posts</h2><hr>
     <ul>
     {% for u in user.posts %}
-    <div class='container'>
+    <div >
             <li class="post">
                 <h1>{{ u.title }}</h1>
                 <small>posted by {{ u.auther.name }} on date {{ u.date }}</small>
